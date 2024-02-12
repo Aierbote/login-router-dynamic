@@ -38,10 +38,9 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 		"3",
 	]);
 
-	// function toggleIsAuthenticated() {
-	// 	console.log("cosa");
-	// 	setIsAuthenticated(!isAuthenticated);
-	// }
+	function toggleIsAuthenticated() {
+		setIsAuthenticated(!isAuthenticated);
+	}
 
 	return (
 		<AppContext.Provider
