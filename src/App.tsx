@@ -1,22 +1,16 @@
 import { useContext } from "react";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppContext } from "./ContextProvider";
 import { LoginRoute } from "./components/LoginRoute";
 import { HomeRoute } from "./components/HomeRoute";
+import { MyNavbar } from "./components/MyNavbar";
 
 function App() {
 	const { isAuthenticated } = useContext(AppContext);
 
 	return (
 		<BrowserRouter>
-			<nav>
-				<div>
-					<NavLink to="/">Home</NavLink>
-				</div>
-				<div>
-					<NavLink to="/login">Log Out</NavLink>
-				</div>
-			</nav>
+			<MyNavbar />
 
 			<Routes>
 				<Route path="/login" element={<LoginRoute />} />
