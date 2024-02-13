@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { AppContext } from "./ContextProvider";
 import { LoginRoute } from "./components/LoginRoute";
 import { HomeRoute } from "./components/HomeRoute";
@@ -9,6 +9,15 @@ function App() {
 
 	return (
 		<BrowserRouter>
+			<nav>
+				<div>
+					<NavLink to="/">Home</NavLink>
+				</div>
+				<div>
+					<NavLink to="/login">Log Out</NavLink>
+				</div>
+			</nav>
+
 			<Routes>
 				<Route path="/login" element={<LoginRoute />} />
 				<Route path="/" element={<HomeRoute />} />
