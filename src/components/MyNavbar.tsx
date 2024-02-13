@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../ContextProvider";
 import { NavLink } from "react-router-dom";
+import { ButtonLink } from "./ButtonLink";
 
 export function MyNavbar() {
 	const { isAuthenticated, toggleIsAuthenticated } = useContext(AppContext);
@@ -12,11 +13,11 @@ export function MyNavbar() {
 			</div>
 			<div>
 				{isAuthenticated ? (
-					<NavLink to="/login" onClick={toggleIsAuthenticated}>
-						Log Out
-					</NavLink>
+					<ButtonLink to="/login" onClick={toggleIsAuthenticated}>
+						LOGOUT
+					</ButtonLink>
 				) : (
-					<button disabled={!isAuthenticated}>Log Out</button>
+					<button disabled={!isAuthenticated}>Logged Out</button>
 				)}
 			</div>
 		</nav>

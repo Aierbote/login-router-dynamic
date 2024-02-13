@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../ContextProvider";
-import { Link } from "react-router-dom";
+import { ButtonLink } from "./ButtonLink";
 
 export function LoginRoute() {
 	const { toggleIsAuthenticated } = useContext(AppContext);
@@ -9,9 +9,9 @@ export function LoginRoute() {
 
 	return (
 		<>
-			<button onClick={toggleIsAuthenticated}>
-				<Link to="/">Login...</Link>
-			</button>
+			<ButtonLink onClick={toggleIsAuthenticated} to="/">
+				LOGIN
+			</ButtonLink>
 		</>
 	);
 }
