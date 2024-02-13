@@ -11,9 +11,13 @@ export function MyNavbar() {
 				<NavLink to="/">Home</NavLink>
 			</div>
 			<div>
-				<NavLink to="/login" onClick={toggleIsAuthenticated}>
-					Log Out
-				</NavLink>
+				{isAuthenticated ? (
+					<NavLink to="/login" onClick={toggleIsAuthenticated}>
+						Log Out
+					</NavLink>
+				) : (
+					<button disabled={!isAuthenticated}>Log Out</button>
+				)}
 			</div>
 		</nav>
 	);
