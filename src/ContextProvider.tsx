@@ -31,7 +31,7 @@ export const AppContext = createContext<MyContext>({
 });
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [homeContents, setHomeContents] = useState<Array<string>>([
 		"1",
 		"2",
