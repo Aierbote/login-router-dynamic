@@ -7,9 +7,9 @@ export function HomeRoute() {
 
 	return (
 		<>
-			{homeContents.map((url) => (
-				<li>
-					<Link to={url}>{url}</Link>
+			{homeContents.map((uri) => (
+				<li key={uri}>
+					<Link to={uri}>{uri}</Link>
 				</li>
 			))}
 		</>
