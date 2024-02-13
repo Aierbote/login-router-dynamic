@@ -11,13 +11,13 @@ import { LoginRoute } from "./components/LoginRoute";
 import { HomeRoute } from "./components/HomeRoute";
 import { MyNavbar } from "./components/MyNavbar";
 
-// // Syntax Error : ProtectedRoutes has no children like this, not directly
-// function ProtectedRoutes({ children }: { children: JSX.Element }) {
+// // Syntax Error : ProtectedRoute has no children like this, not directly
+// function ProtectedRoute({ children }: { children: JSX.Element }) {
 
-function ProtectedRoutes() {
+function ProtectedRoute() {
 	const { isAuthenticated } = useContext(AppContext);
 	if (!isAuthenticated) {
-		return <Navigate to="/" />;
+		return <Navigate to="/login" />;
 	}
 	return <Outlet />;
 }
@@ -31,18 +31,21 @@ function App() {
 
 			<Routes>
 				<Route path="/login" element={<LoginRoute />} />
-				{/* // Syntax Error : ProtectedRoutes has no children like this, not directly  */}
-				<Route element={<ProtectedRoutes />}>
+
+				{/* // Syntax Error : ProtectedRoute has no children like this, not directly  */}
+				<Route element={<ProtectedRoute />}>
 					<Route path="/" element={<HomeRoute />} />
+				</Route>
+				<Route element={<ProtectedRoute />}>
 					<Route path="/:id">Detail</Route>
 				</Route>
 				{/* // NO SYNTAX ERROR, but `Routes` cannot render non-`Route` elements */}
-				{/* <ProtectedRoutes>
+				{/* <ProtectedRoute>
 					<>
 						<Route path="/" element={<HomeRoute />} />
 						<Route path="/:id">Detail</Route>
 					</>
-				</ProtectedRoutes> */}
+				</ProtectedRoute> */}
 			</Routes>
 		</BrowserRouter>
 	);
