@@ -1,17 +1,23 @@
-import {
-	BrowserRouter,
-	Navigate,
-	Route,
-	Routes,
-	useParams,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import { LoginRoute } from "./components/LoginRoute";
 import { HomeRoute } from "./components/HomeRoute";
 import { MyNavbar } from "./components/MyNavbar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { useEffect, useState } from "react";
 // import { useState } from "react";
 
-function usePostsList() {
+function usePostFetch(idPost: string) {
+	// const initPostData = !!localStorage.getItem("postData")
+	// 	? JSON.parse(localStorage.getItem("postData") as string)
+	// 	: null;
+
+	const [postData, setPostData] = useState<{
+		userId: string;
+		id: string;
+		title: string;
+		body: string;
+	}>({ userId: "", id: "", title: "", body: "" });
+
 	const getSingleDetail = async () => {
 		try {
 			const response = await fetch(
@@ -19,23 +25,29 @@ function usePostsList() {
 			);
 			const data = await response.json();
 
-			return data;
+			setPostData(data);
+			console.log("data", data);
 		} catch (err: any) {
 			console.error(`Something Wrong: ${err}`);
-
-			return null;
 		}
 	};
 
-	const singleDetail = getSingleDetail();
+	useEffect(() => {
+		getSingleDetail();
+	}, []);
+
+	return [postData];
 }
 
 function DetailRoute() {
 	const { idPost } = useParams();
+	const [postData] = usePostFetch(idPost as string);
 
 	return (
 		<div>
 			<h1>Draft Post Details {idPost}</h1>
+			<h3>{postData.title.toUpperCase()}</h3>
+			<p>{postData.body}</p>
 		</div>
 	);
 }
