@@ -1,5 +1,6 @@
 {
 	"name": "login-router-dynamic",
+	"homepage": "https://aierbote.github.io/login-router-dynamic/",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
